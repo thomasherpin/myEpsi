@@ -1,7 +1,5 @@
 package fr.epsi.myEpsi.beans;
 
-import java.sql.Timestamp;
-
 public class User {
 
 	private String id;
