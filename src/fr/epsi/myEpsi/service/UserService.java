@@ -8,7 +8,11 @@ import fr.epsi.myEpsi.dao.UserDAO;
 
 public class UserService implements IUserService{
 
-	IUserDao userDao = new UserDAO();
+	IUserDao userDao;
+	
+	public UserService() {
+		this.userDao = new UserDAO();
+	}
 	
 	@Override
 	public List<User> getListOfUsers() {
