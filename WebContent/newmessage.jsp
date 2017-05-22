@@ -30,6 +30,19 @@
                                   <textarea name="content" class="form-control" placeholder="You can put your message here... " required=""></textarea>
                                   <span class="help-block"></span>
                               </div>
+                              <div class="control-group text-center">
+                              	<label class="control-label" for="radios">Status</label>
+                              		<div class="controls">
+										<label class="radio inline" for="radios-0">
+											<input type="radio" name="radios" id="radios-0" value="Public" checked="checked">
+											Public
+										</label>
+										<label class="radio inline" for="radios-1">
+											<input type="radio" name="radios" id="radios-1" value="Privé">
+											Privé
+										</label>
+									</div>
+                              </div>
                               <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
                               <button type="submit" value="login" name="submit" class="btn btn-success btn-block">Ajouter</button>
                               <button type="submit" value="login" name="submit" class="btn btn-danger btn-block">Annuler</button>

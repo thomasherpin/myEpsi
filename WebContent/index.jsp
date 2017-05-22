@@ -17,25 +17,7 @@
               <div class="row">
                   <div class="col-xs-6">
                       <div class="well">
-                          <form id="loginForm" method="GET">
-                              <div class="form-group">
-                                  <label for="mail" class="control-label">Mail</label>
-                                  <input type="text" class="form-control" name="mail" value="" required="" title="Please enter your mail" placeholder="mail">
-                                  <span class="help-block"></span>
-                              </div>
-                              <div class="form-group">
-                                  <label for="password" class="control-label">Password</label>
-                                  <input type="password" class="form-control" name="password" placeholder="password" value="" required="" title="Please enter your password">
-                                  <span class="help-block"></span>
-                              </div>
-                              <div id="loginErrorMsg" class="alert alert-error hide">Wrong username or password</div>
-                              <button type="submit" value="login" name="submit" class="btn btn-success btn-block">Login</button>
-                          </form>
-                      </div>
-                  </div>
-                  <div class="col-xs-6">
-                      <div class="well">
-                          <form id="registerForm" method="GET">
+                          <form id="loginForm" method="GET" action="Login">
                               <div class="form-group">
                                   <label for="mail" class="control-label">Mail</label>
                                   <input type="text" class="form-control" name="mail" value="" required="" title="Please enter your mail" placeholder="mail@mail.xx">
@@ -46,13 +28,29 @@
                                   <input type="password" class="form-control" name="password" placeholder="password" value="" required="" title="Please enter your password">
                                   <span class="help-block"></span>
                               </div>
+                              <button type="submit" value="login" name="submit" class="btn btn-success btn-block">Login</button>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="col-xs-6">
+                      <div class="well">
+                          <form id="registerForm" method="GET" action="Register">
                               <div class="form-group">
-                                  <label for="confirmpassword" class="control-label">Confirm your password</label>
-                                  <input type="password" class="form-control" name="Confirmpassword" placeholder="Confirm password" value="" required="" title="Please confirm by enter your password">
+                                  <label for="mailregister" class="control-label">Mail</label>
+                                  <input type="text" class="form-control" name="mailregister" value="" required="" title="Please enter your mail" placeholder="mail@mail.xx">
                                   <span class="help-block"></span>
                               </div>
-                              <div id="registerErrorMsg" class="alert alert-error hide">Mail already exist</div>
-                              <button type="submit" value="login" name="submit" class="btn btn-success btn-block">Register</button>
+                              <div class="form-group">
+                                  <label for="passwordregister" class="control-label">Password</label>
+                                  <input type="password" class="form-control" name="passwordregister" placeholder="password" value="" required="" title="Please enter your password">
+                                  <span class="help-block"></span>
+                              </div>
+                              <div class="form-group">
+                                  <label for="confirmpasswordregister" class="control-label">Confirm your password</label>
+                                  <input type="password" class="form-control" name="confirmpasswordregister" placeholder="Confirm password" value="" required="" title="Please confirm by enter your password">
+                                  <span class="help-block"></span>
+                              </div>
+                              <button type="submit" value="register" name="submit" class="btn btn-success btn-block">Register</button>
                           </form>
                       </div>
                   </div>
