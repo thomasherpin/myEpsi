@@ -1,5 +1,7 @@
 package fr.epsi.myEpsi.beans;
 
+import java.sql.Timestamp;
+
 public class User {
 
 	private String id;
@@ -23,6 +25,9 @@ public class User {
 	}
 	public void setAdministrator(Boolean administrator) {
 		this.administrator = administrator;
+	}
+	public User() {
+		
 	}
 	
 }

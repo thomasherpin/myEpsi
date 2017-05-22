@@ -47,15 +47,20 @@ public class UserDAO implements IUserDao {
 	public User getUserById(String id) {
 		User user = new User();
 		Connection con = ConnectionTool.getConnection();
+		System.out.println("testuser");
+		System.out.println(id);
+		System.out.println(con);
+		
 		if (con != null)
 		{
+			
 			try {
-				
 			Statement stmt = con.createStatement();
 			ResultSet result = stmt.executeQuery("SELECT * FROM USERS WHERE ID ='" + id + "'");
-
-			user.setId(result.getString(1));
-			user.setAdministrator(result.getBoolean(3));
+			System.out.println(result.next());
+			user.setId(result.getObject(1).toString());
+			user.setPassword(result.getObject(2).toString());
+			user.setAdministrator((Boolean)result.getObject(3));
 
 			stmt.close();
 			con.close();
@@ -72,16 +77,18 @@ public class UserDAO implements IUserDao {
 	@Override
 	public void addUser(User user) {
 		Connection con = ConnectionTool.getConnection();
+		System.out.println("test" +con);
 		if (con != null)
 		{
 			try {
 				Statement stmt = con.createStatement();
 				stmt.executeQuery("INSERT INTO USERS VALUES ("
-						+ user.getId() +"," 
-						+ user.getPassword() + ","
-						+ user.getAdministrator());
+						+ "\'" + user.getId() +"\'," 
+						+ "\'" + user.getPassword() + "\',"
+						+ "" + user.getAdministrator()+")");
 				stmt.close();
 				con.close();
+				System.out.println("Succes: Création de l'utilisateur réussi");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				System.out.println("Alerte: Création de l'utilisateur non réussi");
@@ -89,7 +96,6 @@ public class UserDAO implements IUserDao {
 		} else {
 			System.out.println("Alerte: Connection failed");
 		}
-		System.out.println("Succes: Création de l'utilisateur réussi");
 			
 	}
 
@@ -104,8 +110,9 @@ public class UserDAO implements IUserDao {
 						+ user.getPassword()
 						+ "', ISADMINISTRATOR = "
 						+ user.getAdministrator()
-						+ ", WHERE ID = " 
-						+ user.getId());
+						+ ", WHERE ID = '"
+						+ user.getId()
+						+ "'");
 				stmt.close();
 				con.close();
 			} catch (SQLException e) {
@@ -128,8 +135,8 @@ public class UserDAO implements IUserDao {
 			try {
 				Statement stmt = con.createStatement();
 				stmt.executeQuery("DELETE FROM USERS "
-						+ "WHERE ID = "
-						+ user.getId());
+						+ "WHERE ID = '"
+						+ user.getId() + "'");
 				stmt.close();
 				con.close();
 			} catch (SQLException e) {
