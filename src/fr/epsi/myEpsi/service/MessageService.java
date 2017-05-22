@@ -9,7 +9,11 @@ import fr.epsi.myEpsi.dao.MessageDAO;
 
 public class MessageService implements IMessageService {
 
-	IMessageDao messageDao = new MessageDAO();
+	IMessageDao messageDao;
+	
+	public MessageService(){
+		messageDao = new MessageDAO();
+	}
 	
 	@Override
 	public List<Message> getListOfMessages(User user) {
