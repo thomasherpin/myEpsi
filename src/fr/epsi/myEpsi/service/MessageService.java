@@ -45,4 +45,9 @@ public class MessageService implements IMessageService {
 		messageDao.deleteMessage(message);
 	}
 
+	@Override
+	public List<Message> getListOfMessagesAll(User currentuser) {
+		// TODO Auto-generated method stub
+		return messageDao.getListOfMessagesAll(currentuser);	}
+
 }

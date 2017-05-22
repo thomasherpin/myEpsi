@@ -44,6 +44,37 @@ public class MessageDAO implements IMessageDao {
 		}
 		return messages;
 	}
+	
+	@Override
+	public List<Message> getListOfMessagesAll(User user) {
+		List<Message> messages = new ArrayList<>();
+		
+		Connection con = ConnectionTool.getConnection();
+		if (con != null)
+		{
+			try {
+				
+			Statement stmt = con.createStatement();
+			ResultSet result = stmt.executeQuery("SELECT * FROM MESSAGES");
+			while (result.next()) {
+				Message message = new Message();
+				message.setId(result.getLong(1));
+				message.setTitle(result.getString(2));
+				message.setContent(result.getString(3));
+				//ce qu'on veut récupérer du message
+				messages.add(message);
+				stmt.close();
+				con.close();
+			}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
+		} else {
+			return null;
+		}
+		return messages;
+	}
 
 	@Override
 	public Message getMessage(Long id) {
@@ -77,16 +108,18 @@ public class MessageDAO implements IMessageDao {
 		{
 			try {
 				Statement stmt = con.createStatement();
+
 				stmt.executeQuery("INSERT INTO MESSAGES VALUES ("
-						+ message.getId() +"," 
-						+ message.getTitle() + ","
-						+ message.getContent() + ","
-						+ message.getAuthor() + ","
-						+ message.getCreationDate() + ","
-						+ message.getUpdateDate() + ","
-						+ message.getStatus());
+//						+ message.getId() +"," 
+						+ "'" + message.getTitle() + "', "
+						+ "'" + message.getContent() + "', "
+						+ "'" + message.getAuthor() + "', "
+						+ "'" + message.getCreationDate() + "', "
+						+ "'" + message.getUpdateDate() + "', "
+						+ message.getStatus() + ")");
 				stmt.close();
 				con.close();
+				System.out.println("Succes: Ajout du message réussi");
 			} catch (SQLException e) {
 				e.printStackTrace();
 				System.out.println("Alerte: Ajout du message non réussi");
@@ -94,8 +127,6 @@ public class MessageDAO implements IMessageDao {
 		} else {
 			System.out.println("Alerte: Connection failed");
 		}
-		System.out.println("Succes: Ajout du message réussi");
-
 	}
 
 	@Override

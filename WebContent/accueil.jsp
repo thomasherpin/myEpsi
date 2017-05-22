@@ -9,13 +9,20 @@
 <title>Accueil</title>
 </head>
 <body>
+<%
+out.println(session.getAttribute("mail"));
+String userid = session.getAttribute("mail").toString();
+%>
 <div id=container>
 	<h1 class="text-center"><span class="label label-success">Accueil</span></h1>
 
-	<h2 class="text-center"><button type="button" class="btn btn-lg btn-primary">Créer un nouveau message: Faire une redirection</button>
+<!-- 	<form id="redirection" method="GET" action="messageredirection">
+	</form>
+ -->		
+ 	<h2 class="text-center"><a href="newmessage.jsp"><input type="button" class="btn btn-lg btn-primary" value="Créer un nouveau message !"/></a>
 	</h2>
-	<div class="col-sm">	
-		<div class="panel panel-primary">
+	<div class="col-sm">
+ 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Mes messages</h3>
 			</div>

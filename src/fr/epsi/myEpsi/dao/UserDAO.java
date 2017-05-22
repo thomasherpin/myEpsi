@@ -85,7 +85,7 @@ public class UserDAO implements IUserDao {
 				stmt.executeQuery("INSERT INTO USERS VALUES ("
 						+ "\'" + user.getId() +"\'," 
 						+ "\'" + user.getPassword() + "\',"
-						+ "" + user.getAdministrator()+")");
+						+ user.getAdministrator()+")");
 				stmt.close();
 				con.close();
 				System.out.println("Succes: Création de l'utilisateur réussi");

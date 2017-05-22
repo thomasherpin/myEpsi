@@ -7,15 +7,15 @@ public class Message {
 	private Long id;
 	private String title;
 	private String content;
-	private User author;
+	private String author;
 	private Timestamp creationDate;
 	private Timestamp updateDate;
-	private Status status;
+	private int status;
 	
-	public Status getStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(Status status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	public Long getId() {
@@ -36,10 +36,10 @@ public class Message {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public User getAuthor() {
+	public String getAuthor() {
 		return author;
 	}
-	public void setAuthor(User author) {
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 	public Timestamp getCreationDate() {

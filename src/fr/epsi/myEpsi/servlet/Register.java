@@ -43,16 +43,16 @@ public class Register extends HttpServlet {
 		boolean usercreate = true;
 		
 		//TestDeCondition #OnfaitpasduDRY
-//		if(session.getAttribute("passswordregister").toString().equals(session.getAttribute("confirmpassswordregister").toString()))
-//		{
-//			IUserService userService = new UserService();
-//			for(User oneuser:userService.getListOfUsers()){
-//				if (oneuser.getId().equals(session.getAttribute("mailregister").toString()))
-//				{
-//					usercreate = false;
-//				}
-//			}
-//		}
+		if(session.getAttribute("passswordregister").toString().equals(session.getAttribute("confirmpassswordregister").toString()))
+		{
+			IUserService userService = new UserService();
+			for(User oneuser:userService.getListOfUsers()){
+				if (oneuser.getId().equals(session.getAttribute("mailregister").toString()))
+				{
+					usercreate = false;
+				}
+			}
+		}
 		
 		
 		//CreerUser => User.java
@@ -65,22 +65,8 @@ public class Register extends HttpServlet {
 
 			//AddUser => UserService.java
 			IUserService newUserService = new UserService();
-			IUserService userService = new UserService();
 			newUserService.addUser(user);
-			
-			System.out.println("OK");
-			User thisuser = userService.getUserById(user.getId());
-			System.out.println(thisuser);
-			System.out.println(userService.getUserById(user.getId()));
-
-			
 		}
-
-		
-		
-		
-		//Appelservice
-
 		//Redirection
 		response.sendRedirect("index.jsp");
 //		response.sendRedirect("accueil.jsp");
