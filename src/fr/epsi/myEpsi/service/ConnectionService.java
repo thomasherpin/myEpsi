@@ -4,7 +4,11 @@ import fr.epsi.myEpsi.beans.User;
 
 public class ConnectionService implements IConnectionService {
 
-	IUserService userService = new UserService();
+	IUserService userService;
+	
+	public ConnectionService(){
+		userService = new UserService();
+	}
 	
 	@Override
 	public boolean isAuthorized(User user) {
